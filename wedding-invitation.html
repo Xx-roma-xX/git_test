@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #7f8c8d;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hearts {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin: 20px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .detail-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .detail-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .detail-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .detail-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #7f8c8d;
+        }
+
+        .message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+            font-style: italic;
+            color: #34495e;
+            margin: 30px 0;
+        }
+
+        .form-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .decorative-line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #3498db, transparent);
+            margin: 30px auto;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content-section, .form-section {
+                padding: 30px 20px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Александр & Мария</h1>
+            <p class="subtitle">Приглашают вас на свою свадьбу</p>
+            <div class="hearts">❤️ 💍 ❤️</div>
+        </header>
+
+        <section class="content-section">
+            <p class="message">
+                Дорогие друзья и родные!<br><br>
+                Мы счастливы пригласить вас разделить с нами этот особенный день — день рождения нашей семьи. 
+                Ваша поддержка и любовь так много значат для нас, и мы не представляем нашего праздника без вас!
+            </p>
+
+            <div class="decorative-line"></div>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span class="detail-icon">📅</span>
+                    <h3 class="detail-title">Дата</h3>
+                    <p class="detail-text">15 Июля 2024<br>Суббота</p>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">⏰</span>
+                    <h3 class="detail-title">Время</h3>
+                    <p class="detail-text">Сбор гостей: 15:00<br>Церемония: 16:00</p>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📍</span>
+                    <h3 class="detail-title">Место</h3>
+                    <p class="detail-text">Загородный клуб "Лесная Сказка"<br>ул. Праздничная, 1</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h2 class="form-title">Подтвердите ваше присутствие</h2>
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя и фамилия *</label>
+                    <input type="text" id="name" name="name" required placeholder="Иван и Ольга Петровы">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+7 (999) 000-00-00">
+                </div>
+
+                <div class="form-group">
+                    <label for="attendance">Сможете ли вы присутствовать? *</label>
+                    <select id="attendance" name="attendance" required>
+                        <option value="">Выберите вариант</option>
+                        <option value="yes">С удовольствием приду!</option>
+                        <option value="yes_plus_one">Приду с парой</option>
+                        <option value="no">К сожалению, не смогу</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Количество гостей</label>
+                    <input type="number" id="guests" name="guests" min="1" max="10" value="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Пожелания или вопросы</label>
+                    <textarea id="message" name="message" placeholder="Напишите ваши пожелания или вопросы..."></textarea>
+                </div>
+
+                <button type="submit">Отправить ответ</button>
+
+                <div id="successMessage" class="success-message">
+                    Спасибо! Ваш ответ успешно отправлен. Ждем вас на празднике! 🎉
+                </div>
+
+                <div id="errorMessage" class="error-message">
+                    Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.
+                </div>
+            </form>
+        </section>
+
+        <footer>
+            <p>С любовью, Александр и Мария</p>
+            <p>До встречи на нашем празднике! 💕</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Получаем данные формы
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Имитация отправки данных (в реальном проекте здесь будет AJAX запрос)
+            console.log('Данные формы:', data);
+            
+            // Показываем сообщение об успехе
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const submitButton = this.querySelector('button[type="submit"]');
+            
+            // Блокируем кнопку на время "отправки"
+            submitButton.disabled = true;
+            submitButton.textContent = 'Отправка...';
+            
+            // Имитируем задержку сети
+            setTimeout(() => {
+                // В реальном проекте здесь была бы проверка ответа сервера
+                const success = true; // Заглушка для демонстрации
+                
+                if (success) {
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    this.reset();
+                } else {
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                }
+                
+                submitButton.disabled = false;
+                submitButton.textContent = 'Отправить ответ';
+                
+                // Скрываем сообщения через 5 секунд
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }, 1500);
+        });
+
+        // Анимация появления элементов при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за всеми секциями
+        document.querySelectorAll('.content-section, .form-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Маска для телефона (простая реализация)
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value[0] === '7' || value[0] === '8') {
+                    value = value.substring(1);
+                }
+                if (value.length > 10) {
+                    value = value.substring(0, 10);
+                }
+                let formatted = '+7';
+                if (value.length > 0) formatted += ' (' + value.substring(0, 3);
+                if (value.length > 3) formatted += ') ' + value.substring(3, 6);
+                if (value.length > 6) formatted += '-' + value.substring(6, 8);
+                if (value.length > 8) formatted += '-' + value.substring(8, 10);
+                e.target.value = formatted;
+            } else {
+                e.target.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
